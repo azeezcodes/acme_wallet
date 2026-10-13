@@ -35,7 +35,6 @@ export function Pagination({ page, totalPages, getHref, summary, className }: Pa
               <li key={item}>
                 <Link
                   href={getHref(item)}
-                  scroll={false}
                   className={cx(styles.page, item === page && styles.current)}
                   aria-current={item === page ? 'page' : undefined}
                   aria-label={`Page ${item}`}
@@ -78,7 +77,7 @@ function StepLink({ href, direction }: { href: string | null; direction: 'previo
   }
 
   return (
-    <Link href={href} scroll={false} className={styles.step} rel={isPrevious ? 'prev' : 'next'}>
+    <Link href={href} className={styles.step} rel={isPrevious ? 'prev' : 'next'}>
       {content}
     </Link>
   )

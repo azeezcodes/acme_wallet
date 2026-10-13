@@ -17,10 +17,6 @@
   cursor: pointer;
 }
 
-.row:last-child {
-  border-bottom: 0;
-}
-
 .row:hover {
   background: var(--color-bg-subtle);
 }

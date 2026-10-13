@@ -13,3 +13,7 @@
   font-size: var(--text-md);
   color: var(--color-text-muted);
 }
+
+.rows > :last-child {
+  border-bottom: 0;
+}

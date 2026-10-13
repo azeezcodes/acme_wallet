@@ -10,7 +10,7 @@ import styles from './TransactionRow.module.css'
 
 export interface TransactionRowProps {
   transaction: Transaction
-  /** Link to the transaction's details. Takes precedence over `onSelect`. */
+  /** Link to the transaction's details. `onSelect` still fires when it is followed. */
   href?: string
   onSelect?: (transaction: Transaction) => void
   /** Show only the time, for lists that are already grouped by day. */
@@ -41,7 +41,7 @@ export function TransactionRow({ transaction: tx, href, onSelect, timeOnly = fal
 
   if (href) {
     return (
-      <Link href={href} scroll={false} className={styles.row}>
+      <Link href={href} scroll={false} className={styles.row} onClick={() => onSelect?.(tx)}>
         {content}
       </Link>
     )
