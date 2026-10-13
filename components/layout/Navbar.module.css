@@ -49,11 +49,28 @@
 }
 
 @media (max-width: 640px) {
-  .links {
-    display: none;
+  .inner {
+    flex-wrap: wrap;
+    gap: 0;
+    height: auto;
+    padding-top: var(--space-3);
   }
 
-  .inner {
-    justify-content: space-between;
+  .links {
+    order: 1;
+    flex-basis: 100%;
+    gap: var(--space-6);
+    margin-top: var(--space-2);
+    overflow-x: auto;
+  }
+
+  .link {
+    padding: var(--space-2) 0;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+  }
+
+  .active {
+    border-bottom-color: var(--color-primary);
   }
 }
