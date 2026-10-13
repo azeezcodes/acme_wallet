@@ -57,7 +57,9 @@
 }
 
 .body {
-  flex: 1;
+  flex: 1 1 auto;
+  /* Let the body shrink and scroll inside the panel instead of pushing past its edge (Safari). */
+  min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: var(--space-6);
@@ -73,8 +75,10 @@
     inset: auto 0 0 0;
     width: 100%;
     height: auto;
+    max-height: 90vh;
     max-height: 90dvh;
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    overflow: hidden;
   }
 
   .panel[open] {
@@ -87,7 +91,8 @@
 
   .body {
     padding: var(--space-5);
-    padding-bottom: calc(var(--space-5) + env(safe-area-inset-bottom));
+    /* Clear the home indicator / browser toolbar so the last row is never under it. */
+    padding-bottom: calc(var(--space-8) + env(safe-area-inset-bottom, 0px));
   }
 }
 
