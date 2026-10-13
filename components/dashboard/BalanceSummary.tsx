@@ -10,13 +10,14 @@ export function BalanceSummary({ wallets }: { wallets: Wallet[] }) {
 
   return (
     <Card className={styles.card}>
-      <div>
+      <div className={styles.summary}>
         <p className={styles.label}>Total balance</p>
         <p className={styles.total}>{hidden ? '••••••' : <Money amount={total} currency="NGN" />}</p>
       </div>
       <Button
         variant="ghost"
         size="sm"
+        className={styles.toggle}
         iconLeft={hidden ? 'eye' : 'eye-off'}
         onClick={() => setHidden(!hidden)}
       >
