@@ -5,6 +5,11 @@
   gap: var(--space-4);
 }
 
+/* Let the amount column shrink so the button stays inside the card. */
+.summary {
+  min-width: 0;
+}
+
 .label {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
@@ -12,7 +17,44 @@
 
 .total {
   margin-top: var(--space-1);
-  font-size: var(--text-3xl);
+  /* Scales down on phones so long balances stay on one line. */
+  font-size: clamp(var(--text-2xl), 9vw, var(--text-3xl));
   font-weight: var(--weight-heavy);
   letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.toggle {
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  /* Label and Hide share the top row; the amount gets the card's full width below. */
+  .card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'label  toggle'
+      'total  total';
+    align-items: center;
+    column-gap: var(--space-3);
+    row-gap: 0;
+  }
+
+  .summary {
+    display: contents;
+  }
+
+  .label {
+    grid-area: label;
+  }
+
+  .total {
+    grid-area: total;
+  }
+
+  .toggle {
+    grid-area: toggle;
+    margin-right: calc(-1 * var(--space-3));
+  }
 }
